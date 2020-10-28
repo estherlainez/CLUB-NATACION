@@ -67,6 +67,14 @@ public class Cliente {
         this.passCliente = passCliente;
     }
 
+    public Cliente(int idCliente,String nombreCliente, String dniCliente) {
+        super();
+        this.idCliente=idCliente;
+        this.nombreApellidosCliente = nombreCliente;
+        this.dniCliente = dniCliente;
+
+    }
+
     public Cliente() {
     }
 
