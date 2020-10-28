@@ -1,4 +1,4 @@
-package com.example.appsport.dummy;
+package com.example.appsport.controller;
 
 import android.content.Context;
 import android.os.StrictMode;

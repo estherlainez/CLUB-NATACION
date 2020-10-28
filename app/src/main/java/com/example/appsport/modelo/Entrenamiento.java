@@ -1,4 +1,4 @@
-package com.example.appsport.dummy;
+package com.example.appsport.modelo;
 
 import java.util.Date;
 

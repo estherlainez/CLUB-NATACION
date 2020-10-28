@@ -1,4 +1,4 @@
-package com.example.appsport.dummy;
+package com.example.appsport.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.appsport.R;
+import com.example.appsport.modelo.Profesional;
 
 import java.util.ArrayList;
 import java.util.List;

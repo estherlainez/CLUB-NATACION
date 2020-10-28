@@ -1,16 +1,15 @@
-package com.example.appsport.dummy;
+package com.example.appsport.vista;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.appsport.R;
+import com.example.appsport.modelo.Profesional;
 
 import java.util.List;
 

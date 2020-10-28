@@ -1,4 +1,4 @@
-package com.example.appsport.dummy;
+package com.example.appsport.modelo;
 
 public class Profesional {
     private int idProfesional;
