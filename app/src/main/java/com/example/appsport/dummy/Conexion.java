@@ -9,12 +9,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
+
 public class Conexion {
+
+    String server = "pmssql100.dns-servicio.com:1433";
+    String baseDeDatos="6366619_ell";
+    String un = "ellUser";
+    String password = "Ell2020@sicom";
+    String port = "1433";
     String ip = "192.168.159.1";
     String classs = "net.sourceforge.jtds.jdbc.Driver";
-    String baseDeDatos="clubNatacion";
-    String un = "sa";
-    String password = "1234";
 
     public Connection conexion() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -23,21 +28,23 @@ public class Conexion {
         Connection con = null;
         String conUrl = null;
 
-
         try {
-
-            Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-            conUrl = "jdbc:jtds:sqlserver://" + ip + ";"
+            Class.forName(classs);
+            conUrl = "jdbc:jtds:sqlserver://" +server+";integratedSecurity=true;"
                     + "databaseName=" + baseDeDatos + ";user=" + un + ";password="
                     + password + ";";
             con = DriverManager.getConnection(conUrl);
+
+
         } catch (SQLException se) {
-        Log.e("ERROR", se.getMessage());
-    } catch (ClassNotFoundException e) {
-        Log.e("ERROR", e.getMessage());
-    } catch (Exception e) {
-        Log.e("ERROR", e.getMessage());
-    }
+            Log.e("ERROR", se.getMessage());
+        } catch (ClassNotFoundException e) {
+            Log.e("ERROR", e.getMessage());
+        } catch (Exception e) {
+            Log.e("ERROR", e.getMessage());
+        }
         return con;
+
+
     }
 }
