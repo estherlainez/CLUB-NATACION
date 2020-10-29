@@ -2,10 +2,12 @@ package com.example.appsport.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,18 +22,25 @@ import java.sql.SQLException;
 
 public class PrincipalActivity extends AppCompatActivity {
     TextView idCliente, nombreCliente, dniCliente;
+    int idC;
+    MenuItem action_add_newEntreanmiento,action_entrenamientos_ver,action_profesionales_ver;
     ClienteController cc= new ClienteController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        action_add_newEntreanmiento=(MenuItem)findViewById(R.id.action_add_new_entrenamiento);
+        action_entrenamientos_ver=(MenuItem)findViewById(R.id.action_entrenamientos_ver);
+        action_profesionales_ver=(MenuItem)findViewById(R.id.action_profesionales_ver);
+
+
         idCliente=(TextView) findViewById(R.id.textIdCliente);
         nombreCliente=(TextView) findViewById(R.id.textNombre);
         dniCliente=(TextView)findViewById(R.id.textDni);
 
         Bundle datos = this.getIntent().getExtras();
-        int idC = datos.getInt("idCliente");
+        idC = datos.getInt("idCliente");
         System.out.println("id " + idC);
         Cliente c=cc.datosCliente(idC);
 
@@ -40,24 +49,34 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu_opciones, menu);
+        getMenuInflater().inflate(R.menu.menu_opciones,menu);
         return true;
     }
 
-    public boolean onOptionsItenSelected(MenuItem item){
-        switch(item.getItemId()){
-            case R.id.action_add_new_entrenamiento:
-                Toast.makeText(this,"NUEVO ENTRENAMIENTO",Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_entrenamientos_ver:
-                Toast.makeText(this,"VER ENTRENAMIENTOS",Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_profesionales_ver:
-                Toast.makeText(this,"PROFESIONALES",Toast.LENGTH_SHORT).show();
-            default:
-                return super.onOptionsItemSelected(item);
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id=item.getItemId();
+        if(id==R.id.action_add_new_entrenamiento){
+            Toast.makeText(this,"opcion 1",Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(this, NuevoEntrenamientoActivity.class);
+            intent.putExtra("idCliente",idC);
+            System.out.println("id "+idC);
+            startActivity(intent);
+        }else if(id==R.id.action_entrenamientos_ver){
+            Toast.makeText(this,"opcion 2",Toast.LENGTH_SHORT).show();
+        }else if(id==R.id.action_profesionales_ver){
+            Toast.makeText(this,"opcion 3",Toast.LENGTH_SHORT).show();
         }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void show(View v) {
+        getSupportActionBar().show();
+
+
+    }
+    public void hide(View v){
+        getSupportActionBar().hide();
     }
 
 
